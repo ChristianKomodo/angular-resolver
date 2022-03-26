@@ -1,7 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { NewsResolver } from './news.resolver';
+
+import { TopComponent } from './top/top.component';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent,
+    resolve: { message: NewsResolver }
+  },
+  {
+    path: 'top',
+    component: TopComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
